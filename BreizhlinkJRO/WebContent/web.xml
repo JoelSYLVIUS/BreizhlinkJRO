@@ -1,0 +1,22 @@
+<web-app>
+   <welcome-file-list>
+        <welcome-file>/index</welcome-file>
+    </welcome-file-list>
+    <display-name>javaSite</display-name>
+    <description></description>
+    
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>Servlet.Index</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletIndex</servlet-name>
+        <url-pattern>index</url-pattern>
+    </servlet-mapping>"/Users/Jonitro/git/BreizhlinkJRO"
+ 
+    <error-page>
+    	<error-code>404</error-code>
+    	<location>/error404.html</location>
+    </error-page>
+</web-app>
