@@ -1,4 +1,4 @@
-<footer class="page-footer">
+<footer class="page-footer transparent amber-text text-darken-1">
           <div class="container">
             <div class="row center-align">
               <a class="grey-text text-lighten-4 " href="#!">Devenir Partenaire - </a>

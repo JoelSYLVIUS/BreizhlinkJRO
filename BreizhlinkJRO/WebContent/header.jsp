@@ -14,6 +14,10 @@
 		    display: flex;
 		    min-height: 100vh;
 		    flex-direction: column;
+		    background-image: url("static/img/bg.jpg");
+		    background-repeat:no-repeat;
+		    background-size: 100%;
+		    background-position: center;
 		  }
 		
 		  main {

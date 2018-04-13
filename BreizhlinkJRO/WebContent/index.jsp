@@ -10,14 +10,14 @@
 			</div>
 		</div>
 		<div class="row">
-			<nav>
+			<nav class="transparent">
 				<ul>
-					<li class="col l2 center-align"><a href="#!">Accueil</a></li>
-					<li class="col l2 center-align"><a href="#!">Présentation</a></li>
-					<li class="col l2 center-align"><a href="#!">Création d'un compte</a></li>
-					<li class="col l2 center-align"><a href="#!">Raccourcir</a></li>
-					<li class="col l2 center-align"><a href="#!">Mon compte</a></li>
-					<li class="col l2 center-align"><a href="#!">Déconnexion</a></li>
+					<li class="col l2 center-align ambre-text"><a href="#!">Accueil</a></li>
+					<li class="col l2 center-align ambre-text"><a href="#!">Présentation</a></li>
+					<li class="col l2 center-align ambre-text"><a href="#!">Création d'un compte</a></li>
+					<li class="col l2 center-align ambre-text"><a href="#!">Raccourcir</a></li>
+					<li class="col l2 center-align ambre-text"><a href="#!">Mon compte</a></li>
+					<li class="col l2 center-align ambre-text"><a href="#!">Déconnexion</a></li>
 				</ul>
 			</nav>
 		</div>
