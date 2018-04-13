@@ -22,9 +22,21 @@
 			</nav>
 		</div>
 	</header>
-	<section>
-		<div class="container">
-			
+	<section style="min-height:60vh;">
+		<div class="container padtop">
+			<form action="!#" method="post">
+				<div class="row">
+					<div class="input-field col s1 right-align hei4">
+						<label class="white-text" for="url"><span class="typ">URL</span></label>
+					</div>
+					<div class="input-field col s8 hei4">
+						<input class="inplink" type="text" name="url" id="url">
+					</div>
+					<div class="input-field col s3 hei4" style="padding-left:20px;">
+						<a class=" right-align waves-effect waves-light btn-large amber" style="padding-top:-5px!important;">Raccourcir le lien</a>
+					</div>
+				</div>
+			</form>
 		</div>
 	</section>
 	<jsp:include page="footer.jsp"/>

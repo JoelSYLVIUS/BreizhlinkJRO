@@ -10,14 +10,35 @@
 			height:100px;
 			padding-top:10px;
 		}
+		.padtop{
+			padding-top:20vh;
+		}
 		 body {
 		    display: flex;
 		    min-height: 100vh;
 		    flex-direction: column;
 		    background-image: url("static/img/bg.jpg");
 		    background-repeat:no-repeat;
-		    background-size: 100%;
-		    background-position: center;
+		    background-size: 100% 100%;
+		    background-position: fixed;
+		  }
+		  footer{
+		  position: relative!important;
+		  bottom:0!important;
+		  }
+		  .typ{
+		  	position: relative!important;
+		  	font-size: 40px;
+		  	top:-20px!important;
+		  }
+		  .hei4{
+		  	height: 40px;
+		  }
+		  .inplink{
+		  	background-color:rgba(0, 0, 0, 0.2)!important;
+		  	padding-left: 10px!important;
+		  	padding-right: 10px!important;
+		  	color: #ffffff;
 		  }
 		
 		  main {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Index
  */
-@WebServlet(name = "servletIdex", urlPatterns = "/index")
+@WebServlet(name = "servletIndex", urlPatterns = "/index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,6 +28,7 @@ public class Index extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Index Served at: ").append(request.getContextPath());
+		response.sendRedirect("index.jsp");	
 	}
 
 	/**
