@@ -4,7 +4,9 @@
     <title>Bienvenue</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="static/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
     	.margtop{
 			height:100px;
@@ -26,6 +28,9 @@
 		  position: relative!important;
 		  bottom:0!important;
 		  }
+		  .f40{
+		  	font-size:20px;
+		  }
 		  .typ{
 		  	position: relative!important;
 		  	font-size: 40px;
@@ -40,7 +45,40 @@
 		  	padding-right: 10px!important;
 		  	color: #ffffff;
 		  }
-		
+		  .tshadb{
+		  	text-shadow: 0 0 10px #000000;
+		  }
+		  .rad10{
+		  border-radius:10px;
+		  }
+		  .oswald{
+		  	font-family: 'Oswald', sans-serif;
+		  }
+			.linkg{
+			color:#000000;
+			text-shadow: 0 0 4px #ffffff;
+			}
+			.linkg:hover{
+			color:#000000;
+			text-shadow: 0 0 4px #DC143C;
+			}
+			.tmdpp {
+				position: relative;
+				top: 20px;
+				font-size:20px;
+			}
+			.sectpres1{
+				min-height:25vh;
+			}
+			.sectpres2{
+				height:45vh;
+				padding-top: 10vh;
+			}
+			.sectpres3{
+				height:65vh;
+				padding-top: 10vh;
+			}
+			
 		  main {
 		    flex: 1 0 auto;
 		  }
