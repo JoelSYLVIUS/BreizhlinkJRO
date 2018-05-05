@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.*;
+import java.util.Calendar;
 
 @WebServlet(name = "servletInscriptuser", urlPatterns = "/inscriptuser")
 public class Inscriptuser extends HttpServlet {
@@ -30,58 +31,36 @@ public class Inscriptuser extends HttpServlet {
             String email = request.getParameter("email");
             String pwd = request.getParameter("password");
             String pseudo = request.getParameter("pseudo");
-            //out.println(name);
-            //out.println(firstname);
-        	//out.println(email);
-        	//out.println(password);
-        	//out.println(pseudo);
-            //out.println("ok");
+            
 
             try {
-            	out.println("ok");
-            	Class.forName("com.mysql.jdbc.Driver");                
-                out.println("ok");
-                Connection c = DriverManager.getConnection("jdbc:mysql://localhost:8889/Esgi_breizhlink", "root", "root");
-                out.println("ok");
-                String query = "INERT INTO user ('prenom', 'nom', 'email', 'mdp', 'pseudo') VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement pst = c.prepareStatement(query);
-                  pst.setString(1, firstname);
-                  pst.setString(2, name);
-                  pst.setString(3, email);
-                  pst.setString(4, pwd);
-                  pst.setString(5, pseudo);
-                ResultSet rs = pst.executeQuery();
-               
-                out.println(name);
-            	out.println(firstname);
-            	out.println(email);
-            	out.println(pwd);
-            	out.println(pseudo);
-            	response.sendRedirect("index");	
-                if(rs.next()) {
-                	//HttpSession session = request.getSession();
 
-                    //session.setAttribute("username", usrname); 
-                	out.println(name);
-                	out.println(firstname);
-                	out.println(email);
-                	out.println(pwd);
-                	out.println(pseudo);
+            	DriverDatabase db = new DriverDatabase();
+            	
+                Connection connection = db.getConnection();
+                Calendar currentTime = Calendar.getInstance();
+
+                PreparedStatement create = connection.prepareStatement("INSERT INTO user (prenom, nom, email, mdp, pseudo, date_create) VALUES (?, ?, ?, ?, ?, ?);");
+                create.setString(1, firstname);
+                create.setString(2, name);
+                create.setString(3, email);
+                create.setString(4, pwd);
+                create.setString(5, pseudo);
+                create.setDate(6, new java.sql.Date(currentTime.getTime().getTime()));
+
+                create.executeUpdate();
+               
+                
                     
-                	response.sendRedirect("index");	
-                }
-                else {
-                	response.sendRedirect("index");
-                }
-                c.close();
-            }  catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+                	response.sendRedirect("index.jsp");	
+                
+                connection.close();
+            }  catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             }else {
         }
-        out.println("ERROR");
+        //out.println("ERROR");
     }   
 }

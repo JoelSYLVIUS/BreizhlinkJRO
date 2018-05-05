@@ -27,7 +27,7 @@ public class Login extends DriverDatabase{
         this.created_at = created_at;
     }
 
-    public void checkUser(String username, String password) throws SQLException {
+    public void checkUser(String username, String password) throws SQLException, ClassNotFoundException {
         Connection connection = this.getConnection();
         Statement s = connection.createStatement();
         ResultSet res = s.executeQuery("Select username, password from users where username = "+ username + " and password = "+ password);
