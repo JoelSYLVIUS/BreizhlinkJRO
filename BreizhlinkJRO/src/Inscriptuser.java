@@ -52,7 +52,7 @@ public class Inscriptuser extends HttpServlet {
                
                 
                     
-                	response.sendRedirect("index.jsp");	
+                	response.sendRedirect("login.jsp");	
                 
                 connection.close();
             }  catch (SQLException e) {

@@ -1,41 +1,61 @@
+import javax.servlet.ServletException;
+import javax.servlet.ServletResponseWrapper;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.sql.*;
+import java.util.Calendar;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Arrays;
-import java.util.Date;
+@WebServlet(name = "servletLogin", urlPatterns = "/login")
+public class Login extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //PrintStream out = new PrintStream(response.getOutputStream());
+        
+        
+        
+        if (request.getParameter("pseudo") != null && request.getParameter("password") != null) {
+            String pseudo = request.getParameter("pseudo");
+            String password = request.getParameter("password");
+            
+            
 
-public class Login extends DriverDatabase{
-    private String username;
-    private String password;
-    private Date created_at;
-    private String algorithm = "SHA-256";
+            try {
+            	
+            	DriverDatabase db = new DriverDatabase();
+            	
+                Connection connection = db.getConnection();
+                
+                String query = "SELECT * FROM user WHERE pseudo = ? AND mdp = ?";
+                PreparedStatement pst = connection.prepareStatement(query);
+                  pst.setString(1, pseudo);
+                  pst.setString(2, password);
+                ResultSet rs = pst.executeQuery();
+                
+                if(rs.next()) {
+                	HttpSession session = request.getSession();
 
-    public Login (String username, String password, Date created_at) {
-        this.username = username;
-        this.password = password;
-        this.created_at = created_at;
-    }
-
-    public void checkUser(String username, String password) throws SQLException, ClassNotFoundException {
-        Connection connection = this.getConnection();
-        Statement s = connection.createStatement();
-        ResultSet res = s.executeQuery("Select username, password from users where username = "+ username + " and password = "+ password);
-        res.getRow();
-        while (res.next()) {
-            System.out.println(res.getInt(1)+ " "+ res.getString(2));
+                    session.setAttribute("pseudo", pseudo);
+                    
+                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                    
+                	//response.sendRedirect("index.jsp");	
+                }
+                else {
+                	response.sendRedirect("login.jsp");
+                }
+                connection.close();
+            }  catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            }else {
         }
-
-        connection.close();
-    }
+       // out.println("ERROR");
+    }   
 }
