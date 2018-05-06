@@ -21,7 +21,7 @@
 						<label class="white-text" for="url"><span class="typ">URL</span></label>
 					</div>
 					<div class="input-field col s8 hei4">
-						<input class="inplink" type="text" name="url" id="url" placeholder="Votre url à racourcir">
+						<input class="inplink" type="text" name="url" id="url" placeholder="Votre url à racourcir" required="">
 					</div>
 					<div class="input-field col s3 hei4" style="padding-left:20px;">
 						<button type="submit" class=" right-align waves-effect waves-light btn-large amber" style="padding-top:-5px!important;">Raccourcir le lien</button>

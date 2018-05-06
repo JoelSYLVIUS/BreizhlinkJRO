@@ -45,7 +45,7 @@ public class Raccourcis extends HttpServlet {
             
             ArrayList<Character> surl = new ArrayList<Character>();
             Random rand = new Random();
-            String alphabet = "abc1defgh2ij3klm4no5pq6rs7tuv8wx9yz";
+            String alphabet = "abc1defgh2ij3klm4no5pq6rs7tuv8wx9y0z";
             char shorturl = 'a';
             int longueur = alphabet.length();
             for(int i = 0; i < 5; i++) {
@@ -56,8 +56,9 @@ public class Raccourcis extends HttpServlet {
               //out.print(shorturl);
               
             }
-            String test = (" "+surl.get(0)+surl.get(1)+surl.get(2)+surl.get(3)+surl.get(4));
-            out.print(test);
+            String monurl = (" "+surl.get(0)+surl.get(1)+surl.get(2)+surl.get(3)+surl.get(4));
+            String urlshort = monurl.replaceFirst(" ", "");
+            out.print(urlshort);
 
             try {
 
@@ -68,16 +69,25 @@ public class Raccourcis extends HttpServlet {
                 
                 
                 if(mdp_bjro != null) {
+                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (orginallink, shortlink, pwd_link, create_date) VALUES (?, ?, ?, ?);");
+                    create.setString(1, url);
+                    create.setString(2, urlshort);
+                    create.setLong(3, 1);
+                    create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
+                    create.executeUpdate();
+                    
+                }
+                else {
                 	PreparedStatement create = connection.prepareStatement("INSERT INTO link (orginallink, pwd_link, create_date) VALUES (?, ?, ?, ?, ?, ?);");
-                    create.setString(1, mdp_bjro);
+                	create.setString(1, url);
+                    create.setString(2, urlshort);
+                    create.setLong(3, 0);
+                    create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
 
                     create.executeUpdate();
                 }
 
-                PreparedStatement create = connection.prepareStatement("INSERT INTO link (orginallink, pwd_link, create_date) VALUES (?, ?, ?, ?, ?, ?);");
-                create.setString(1, mdp_bjro);
-
-                create.executeUpdate();
+                
                
                 
                     
