@@ -15,7 +15,7 @@
 	</header>
 	<section style="min-height:60vh;">
 		<div class="container padtop">
-			<form action="!#" method="post">
+			<form action="raccourcis" method="post">
 				<div class="row">
 					<div class="input-field col s1 right-align hei4">
 						<label class="white-text" for="url"><span class="typ">URL</span></label>
@@ -24,8 +24,10 @@
 						<input class="inplink" type="text" name="url" id="url" placeholder="Votre url à racourcir">
 					</div>
 					<div class="input-field col s3 hei4" style="padding-left:20px;">
-						<a class=" right-align waves-effect waves-light btn-large amber" style="padding-top:-5px!important;">Raccourcir le lien</a>
+						<button type="submit" class=" right-align waves-effect waves-light btn-large amber" style="padding-top:-5px!important;">Raccourcir le lien</button>
 					</div>
+				</div>
+				<div class="row">
 					<div class="input-field col s2 right-align">
 						<a id="addmdp" class="btn-floating amber pulse"><i class="material-icons">enhanced_encryption</i></a>
 					</div>
