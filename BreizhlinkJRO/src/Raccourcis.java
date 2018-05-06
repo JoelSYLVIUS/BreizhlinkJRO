@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,7 +36,7 @@ public class Raccourcis extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintStream out = new PrintStream(response.getOutputStream());
+		//PrintStream out = new PrintStream(response.getOutputStream());
 		if (request.getParameter("url") != null ) {
             String url = request.getParameter("url");
             String mdp_bjro = request.getParameter("mdp");
@@ -51,33 +52,53 @@ public class Raccourcis extends HttpServlet {
             for(int i = 0; i < 5; i++) {
               int k = rand.nextInt(longueur);
                shorturl =  alphabet.charAt(k);
-               surl.add(shorturl);
-               
-              //out.print(shorturl);
-              
+               surl.add(shorturl);         
             }
             String monurl = (" "+surl.get(0)+surl.get(1)+surl.get(2)+surl.get(3)+surl.get(4));
             String urlshort = monurl.replaceFirst(" ", "");
-            out.print(urlshort);
-
+            
             try {
-
             	DriverDatabase db = new DriverDatabase();
-            	
-                Connection connection = db.getConnection();
-                Calendar currentTime = Calendar.getInstance();
-                
-                
                 if(mdp_bjro != null) {
-                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (orginallink, shortlink, pwd_link, create_date) VALUES (?, ?, ?, ?);");
+                	
+                	
+                    Connection connection = db.getConnection();
+                    Calendar currentTime = Calendar.getInstance();
+                    
+                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (originallink, shortlink, pwd_link, create_date) VALUES (?, ?, ?, ?);");
                     create.setString(1, url);
                     create.setString(2, urlshort);
-                    create.setLong(3, 1);
+                    create.setString(3, "1");
                     create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
+                    
                     create.executeUpdate();
                     
+                    //out.print("ok");
+                    
+                    String query = "SELECT * FROM link WHERE shortlink = ?";
+                    PreparedStatement pst = connection.prepareStatement(query);
+                      pst.setString(1, urlshort);
+                    ResultSet rs = pst.executeQuery();
+                    
+                    int id_user = 0;
+                    if(rs.next()) {
+                    	id_user = rs.getInt("id");
+                    	PreparedStatement create1 = connection.prepareStatement("INSERT INTO mdp_bjro (mdp_link, id_link) VALUES (?, ?);");
+                        create1.setString(1, mdp_bjro);
+                        create1.setString(2, ""+id_user+"");
+                        
+                        create1.executeUpdate();
+                        connection.close();
+                        
+                        request.setAttribute("urlshort", urlshort);
+                        
+                        getServletContext().getRequestDispatcher("/affiche_url.jsp").forward(request, response);
+                    }
                 }
                 else {
+                	Connection connection = db.getConnection(); 
+                    Calendar currentTime = Calendar.getInstance();
+                	
                 	PreparedStatement create = connection.prepareStatement("INSERT INTO link (orginallink, pwd_link, create_date) VALUES (?, ?, ?, ?, ?, ?);");
                 	create.setString(1, url);
                     create.setString(2, urlshort);
@@ -85,6 +106,8 @@ public class Raccourcis extends HttpServlet {
                     create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
 
                     create.executeUpdate();
+                    connection.close();
+                    getServletContext().getRequestDispatcher("/affiche_url.jsp").forward(request, response);
                 }
 
                 
@@ -93,7 +116,7 @@ public class Raccourcis extends HttpServlet {
                     
                 	response.sendRedirect("login.jsp");	
                 
-                connection.close();
+                
             }  catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -24,9 +24,11 @@
 		    background-repeat:no-repeat;
 		    background-size: 100% 100%;
 		    background-position: fixed;
+		    
 		  }
 		  footer{
-		  position: relative!important;
+		  width: 100%;
+		  position: absolute!important;
 		  bottom:0!important;
 		  }
 		  .f40{
@@ -48,6 +50,9 @@
 		  }
 		  .tshadb{
 		  	text-shadow: 0 0 10px #000000;
+		  }
+		  .ptot{
+		  	padding: 10px;
 		  }
 		  .rad10{
 		  border-radius:10px;
