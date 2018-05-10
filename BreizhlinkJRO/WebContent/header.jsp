@@ -2,11 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Bienvenue</title>
+    <title>${title}</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="static/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
     	.margtop{
@@ -28,11 +30,11 @@
 		  }
 		  footer{
 		  width: 100%;
-		  position: absolute!important;
+		  position: relative!important;
 		  bottom:0!important;
 		  }
 		  .f40{
-		  	font-size:20px;
+		  	font-size:20px !important;
 		  }
 		  .typ{
 		  	position: relative!important;
@@ -41,6 +43,14 @@
 		  }
 		  .hei4{
 		  	height: 40px;
+		  }
+		  .hei50{
+		  	height: 150px;
+		  	margin-top: -20px;
+		  	background-color: rgba(0, 0, 0, 0.2);
+		  }
+		  .bgcn02{
+		  	background-color: rgba(0, 0, 0, 0.2);
 		  }
 		  .inplink{
 		  	background-color:rgba(0, 0, 0, 0.2)!important;
@@ -88,6 +98,18 @@
 				padding: 20px!important;
 				border-radius:10px;
 				border:1px solid #ffffff;
+			}
+			.margbot{
+				margin-bottom: 70px;
+			}
+			.Show11, .Show12{
+				padding-bottom:20px!important;
+			}
+			.target{
+			}
+			.target1{
+				
+				display:none;
 			}
 		  main {
 		    flex: 1 0 auto;

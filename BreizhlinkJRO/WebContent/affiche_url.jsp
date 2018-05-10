@@ -14,12 +14,12 @@
         </div>
     </header>
     <div class="row center ">
-    	<h1 class="white-text">Merci d'avoir utiliser notre solution </h1>
+    	<h1 class="white-text tshadb">Merci d'avoir utiliser notre solution </h1>
     	<p class="white-text f40">
-    	vous pouvez retrouver votre lien raccourcis ci-dessous :<br><br>
+    	<span class="tshadb">vous pouvez retrouver votre lien raccourcis ci-dessous :</span><br><br>
     	
     	
-    		<a class="white rad10 ptot" href="#!">http://localhost:8080/BreizhlinkJRO/${urlshort}</a>
+    		<a class="white rad10 ptot" href="http://localhost:8080/BreizhlinkJRO/${urlshort}">http://localhost:8080/BreizhlinkJRO/${urlshort}</a>
     	
     	</p>
     	<p>

@@ -41,6 +41,10 @@ public class Login extends HttpServlet {
                 	HttpSession session = request.getSession();
 
                     session.setAttribute("pseudo", pseudo);
+                    session.setAttribute("iduser", rs.getInt("id"));
+                    session.setAttribute("prenomuser", rs.getString("prenom"));
+                    session.setAttribute("nomuser", rs.getString("nom"));
+                    session.setAttribute("emailuser", rs.getString("email"));
                     
                     getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                     

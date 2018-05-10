@@ -11,23 +11,25 @@ import java.util.Calendar;
 import java.util.Random;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Raccourcis
+ * Servlet implementation class Raccourcisusr
  */
-@WebServlet(name = "servletRaccourcis", urlPatterns = "/raccourcis")
-public class Raccourcis extends HttpServlet {
+@WebServlet(name = "servletRaccourcisusr", urlPatterns = "/raccourcisusr")
+public class Raccourcisusr extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private char[] shorturl;
+	private ServletRequest session;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Raccourcis() {
+    public Raccourcisusr() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,12 +38,33 @@ public class Raccourcis extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		//PrintStream out = new PrintStream(response.getOutputStream());
-		if (request.getParameter("url") != null ) {
-            String url = request.getParameter("url");
+		if (request.getParameter("url") != null || request.getParameter("url") != " " || request.getParameter("url") != "" && request.getParameter("iduser") != null) {
+			String url = request.getParameter("url");
+			String iduser = request.getParameter("iduser");
             String mdp_bjro = request.getParameter("mdp");
-            //out.println(url);
-            //out.println(mdp_bjro);
+            String datelimite = request.getParameter("datelimit");
+            if(request.getParameter("datelimit") == "") {
+            	datelimite = null;
+            }
+            String check = request.getParameter("check");
+            if(request.getParameter("check") == "") {
+            	 check = null;
+            }
+            String clicmax = request.getParameter("clicmax");
+            if(request.getParameter("clicmax") == "") {
+            	clicmax = null;
+            }
+            String datestart = request.getParameter("datestart");
+            if(request.getParameter("datestart") == "") {
+            	datestart = null;
+            }
+            String dateend = request.getParameter("dateend");
+            if(request.getParameter("dateend") == "") {
+            	dateend = null;
+            }
+            
             
             
             ArrayList<Character> surl = new ArrayList<Character>();
@@ -65,15 +88,20 @@ public class Raccourcis extends HttpServlet {
                     Connection connection = db.getConnection();
                     Calendar currentTime = Calendar.getInstance();
                     
-                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (originallink, shortlink, pwd_link, create_date) VALUES (?, ?, ?, ?);");
+                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (originallink, shortlink, pwd_link, create_date, id_user, captcha, date_limit, start_date, end_date, max_click) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
                     create.setString(1, url);
                     create.setString(2, urlshort);
                     create.setString(3, "1");
                     create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
+                    create.setString(5, iduser);
+                    create.setString(6, check);
+                    create.setString(7, datelimite);
+                    create.setString(8, datestart);
+                    create.setString(9, dateend);
+                    create.setString(10, clicmax);
                     
                     create.executeUpdate();
                     
-                    //out.print("ok");
                     
                     String query = "SELECT * FROM link WHERE shortlink = ?";
                     PreparedStatement pst = connection.prepareStatement(query);
@@ -91,38 +119,40 @@ public class Raccourcis extends HttpServlet {
                         connection.close();
                         
                         request.setAttribute("urlshort", urlshort);
-                        //response.setStatus(HttpServletResponse.SC_FOUND); // SC_FOUND = 302
-                        
                         getServletContext().getRequestDispatcher("/affiche_url.jsp").forward(request, response);
+                        
                     }
+                    
                 }
                 else {
                 	Connection connection = db.getConnection(); 
                     Calendar currentTime = Calendar.getInstance();
                 	
-                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (orginallink, pwd_link, create_date) VALUES (?, ?, ?, ?, ?, ?);");
+                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (originallink, shortlink, pwd_link, create_date, id_user, captcha, date_limit, start_date, end_date, max_click) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
                 	create.setString(1, url);
                     create.setString(2, urlshort);
-                    create.setLong(3, 0);
+                    create.setString(3, "0");
                     create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
+                    create.setString(5, iduser);
+                    create.setString(6, check);
+                    create.setString(7, datelimite);
+                    create.setString(8, datestart);
+                    create.setString(9, dateend);
+                    create.setString(10, clicmax);
 
                     create.executeUpdate();
                     connection.close();
                     getServletContext().getRequestDispatcher("/affiche_url.jsp").forward(request, response);
                 }
-
+                
                 
                
-                
-                    
-                	response.sendRedirect("login.jsp");	
-                
-                
             }  catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             }else {
+            	response.sendRedirect("login.jsp");
         }
 	}
 
