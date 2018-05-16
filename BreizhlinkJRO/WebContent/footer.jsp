@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>	
 	<footer class="page-footer inplink">
         <div class="container">
             <div class="row center-align">
