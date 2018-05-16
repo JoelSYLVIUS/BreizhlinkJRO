@@ -7,7 +7,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/Jonitro/Downloads/mysql-connector-java-5.1.45.zip">
+	<classpathentry kind="lib" path="/Users/roman/Downloads/javaSite/lib/mysql-connector-java-5.1.45-bin.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -19,6 +19,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/Jonitro/Downloads/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/roman/eclipse-workspace/visiteDyn/WebContent/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
