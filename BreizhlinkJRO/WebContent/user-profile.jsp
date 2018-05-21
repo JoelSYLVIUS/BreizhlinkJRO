@@ -17,7 +17,10 @@
 		<div class="container padtop">
 				<div class="row">
 					${texte}a
+<<<<<<< Upstream, based on branch 'roman-userprofile' of https://github.com/JoelSYLVIUS/BreizhlinkJRO.git
 
+=======
+>>>>>>> 1ddf691 user-profile with variable for test in vue.jsp
 				</div> 
 		</div>
 	</section>
