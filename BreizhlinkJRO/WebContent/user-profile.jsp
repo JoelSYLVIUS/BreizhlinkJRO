@@ -16,7 +16,7 @@
 	<section style="min-height:60vh;">
 		<div class="container padtop">
 				<div class="row">
-					
+					${texte}a
 				</div> 
 		</div>
 	</section>
