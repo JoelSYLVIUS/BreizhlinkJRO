@@ -13,7 +13,7 @@
     <servlet-mapping>
         <servlet-name>servletIndex</servlet-name>
         <url-pattern>index</url-pattern>
-    </servlet-mapping>"/Users/Jonitro/git/BreizhlinkJRO"
+    </servlet-mapping>
  
     <error-page>
     	<error-code>404</error-code>
