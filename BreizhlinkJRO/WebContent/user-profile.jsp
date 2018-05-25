@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="inc/header.jsp"/>
 <body>
 	<header>
@@ -13,6 +14,7 @@
 			<jsp:include page="inc/menu.jsp"/>
 		</div>
 	</header>
+		<% if ((session.getAttribute("pseudo")) != null){ %>
 	<section style="min-height:60vh;">
 		<div class="container">
 			<div class="row">
@@ -95,5 +97,21 @@
 			</div> 
 		</div>
 	</section>
+	
+	<% } else { %>
+	<section class="center">
+		<h1 class="white-text tshadb">Vous n'êtes pas connecté</h1>
+		<br><br><br><br>
+		<p class="white-text tshadb f40">
+			Veuillez vous connecter pour avoir accès au contenu de cette page!
+		</p>
+		<br><br><br><br>
+		<p class="white-text margbot">
+			<a href="login.jsp" class=" white-text hoverable tshadb f40">Connexion</a>
+		</p>
+	</section>
+	
+	<% } %>
+	
 	<jsp:include page="inc/footer.jsp"/>
 </html>
