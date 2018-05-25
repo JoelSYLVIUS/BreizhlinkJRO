@@ -1,9 +1,10 @@
+	<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 	<footer class="page-footer inplink">
         <div class="container">
             <div class="row center-align">
               <a class="grey-text text-lighten-4 hoverable" href="mailto:contact@breizhlinkJRO.com?subject=Devenir Partenaire">Devenir Partenaire - </a>
-	            <a class="grey-text text-lighten-4 hoverable" href="#!">CGV - </a>
-	            <a class="grey-text text-lighten-4 hoverable" href="mentionsLegales.jsp">Mentions Légales</a>
+	            <a class="grey-text text-lighten-4 hoverable" href="inc/cgv.jsp">CGV - </a>
+	            <a class="grey-text text-lighten-4 hoverable" href="inc/mentionsLegales.jsp">Mentions Légales</a>
             </div>
         </div>
         <div class="footer-copyright center-align">

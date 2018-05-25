@@ -1,5 +1,5 @@
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="inc/header.jsp"/>
 
 <body>
 	<header>
@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<jsp:include page="menu.jsp"/>
+			<jsp:include page="inc/menu.jsp"/>
 		</div>
 	</header>
 	<% if ((session.getAttribute("pseudo")) != null){ %>
@@ -114,7 +114,7 @@
 	</section>
 	
 	<% } %>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="inc/footer.jsp"/>
 	
 	
 		

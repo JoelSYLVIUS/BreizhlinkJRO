@@ -7,9 +7,10 @@
 			String prenomuser = (String) session.getAttribute("prenomuser");
 			String nomuser = (String) session.getAttribute("nomuser");
 			String emailuser = (String) session.getAttribute("emailmuser");
+			String test = (String) request.getAttribute("test");
 		 if ((session.getAttribute("pseudo")) != null){ %>
 			<li class="col l2 center-align ambre-text"><a href="raccourcis.jsp" class="hoverable tshadb">Raccourcir</a></li>
-			<li class="col l2 center-align ambre-text"><a href="#!" class="hoverable tshadb">Mon compte</a></li>
+			<li class="col l2 center-align ambre-text"><a href="usersprofile?user=${prenomuser}" class="hoverable tshadb">Mon compte</a></li>
 			<li class="col l2 center-align ambre-text"><a href="logout" class="hoverable tshadb">Déconnexion </a></li>
 		<%} else { %>
 			<li class="col l2 center-align ambre-text disabled"><a href="#!"></a></li>

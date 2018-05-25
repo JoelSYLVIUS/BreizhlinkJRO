@@ -109,15 +109,7 @@ public class Raccourcis extends HttpServlet {
                     create.executeUpdate();
                     connection.close();
                     getServletContext().getRequestDispatcher("/affiche_url.jsp").forward(request, response);
-                }
-
-                
-               
-                
-                    
-                	response.sendRedirect("login.jsp");	
-                
-                
+                } 
             }  catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
