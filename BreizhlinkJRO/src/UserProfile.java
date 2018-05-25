@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,22 +35,9 @@ public class UserProfile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String message = "Transmission de variables : OK !";
-		request.setAttribute( "texte", message );
 		
-//		HttpSession session = request.getSession();
-//        session.setAttribute("texte", message);
+//        PrintStream out = new PrintStream(response.getOutputStream());
 		
-		this.getServletContext().getRequestDispatcher( "/user-profile.jsp" ).forward( request, response ); 
-	}
-
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		try {
         	DriverDatabase db = new DriverDatabase();            	
             	
@@ -59,9 +47,14 @@ public class UserProfile extends HttpServlet {
                 PreparedStatement pst = connection.prepareStatement(query);
                   pst.setInt(1, 6);
                 ResultSet rs = pst.executeQuery();
+               
                 
                 if(rs.next()) {
-                    request.setAttribute("link", rs);
+                	
+//                    out.print(rs.getString("originallink"));
+
+                    request.setAttribute("link", rs.getString("originallink"));
+                    
                     
                     getServletContext().getRequestDispatcher("/user-profile.jsp").forward(request, response);
                 }
@@ -79,6 +72,15 @@ public class UserProfile extends HttpServlet {
 			e.printStackTrace();
 		}
         
+	}
+
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+    
 	}
 
 }
