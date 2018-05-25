@@ -1,4 +1,4 @@
-<jsp:include page="header.jsp"/>
+<jsp:include page="inc/header.jsp"/>
 <body>
     <header>
         <div class="row margtop">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="row">
-            <jsp:include page="menu.jsp"/>
+            <jsp:include page="inc/menu.jsp"/>
         </div>
     </header>
     
@@ -35,5 +35,5 @@
          </form>
   </div>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="inc/footer.jsp"/>
 </html>
