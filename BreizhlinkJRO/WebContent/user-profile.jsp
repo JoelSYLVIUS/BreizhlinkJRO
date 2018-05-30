@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="inc/header.jsp"/>
 <body>
 	<header>
@@ -66,9 +67,12 @@
 				</div>
 				
 				<div class="col s6 offset-s1">
-					<div class="row">
+				
+					<h1 class="white-text f40" style="text-shadow: 0 0 4px #000000;">Vos liens</h1>
+									
+					<div class="row col s12 inplink formgen">
 
-					<table class="highlight responsive-table white-text inplink">
+					<table class="highlight responsive-table white-text">
 				        <thead>
 				          <tr>
 				              <th>Lien original</th>
@@ -77,18 +81,12 @@
 				        </thead>
 				
 				        <tbody>
-				          <tr>
-				            <td>${link}</td>
-				            <td>https://localhost:8080/xf5s3</td>
+				        <c:forEach items="${listLink}" var="item">
+						  <tr>
+				            <td>${item.originalLink}</td>
+				            <td><a href="http://localhost:8080/BreizhlinkJRO/${item.shortLink}">http://localhost:8080/BreizhlinkJRO/${item.shortLink}</a></td>
 				          </tr>
-				          <tr>
-				            <td>Alan</td>
-				            <td>Jellybean</td>
-				          </tr>
-				          <tr>
-				            <td>Jonathan</td>
-				            <td>Lollipop</td>
-				          </tr>
+						</c:forEach>
 				        </tbody>
 				     </table>
 

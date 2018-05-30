@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +38,11 @@ public class UserProfile extends HttpServlet {
 		
 //        PrintStream out = new PrintStream(response.getOutputStream());
 		
+    		ArrayList listLink = new ArrayList();
+    		
+    		HttpSession session = request.getSession();
+    		Integer idUser = (Integer) session.getAttribute("iduser");
+		
 		try {
         	DriverDatabase db = new DriverDatabase();            	
             	
@@ -45,24 +50,24 @@ public class UserProfile extends HttpServlet {
                 
                 String query = "SELECT * FROM link WHERE id_user = ?";
                 PreparedStatement pst = connection.prepareStatement(query);
-                  pst.setInt(1, 6);
+                  pst.setInt(1, idUser);
                 ResultSet rs = pst.executeQuery();
                
                 
-                if(rs.next()) {
+                while(rs.next()) {
                 	
-//                    out.print(rs.getString("originallink"));
-
-                    request.setAttribute("link", rs.getString("originallink"));
+            			Map links = new HashMap();
+                	
+	            	    links.put("originalLink", rs.getString("originallink"));
+	            	    links.put("shortLink", rs.getString("shortLink"));
+	            	    
+	            	    listLink.add(links);                    
                     
-                    
-                    getServletContext().getRequestDispatcher("/user-profile.jsp").forward(request, response);
                 }
-                               
-//            	response.sendRedirect("login.jsp");
                 
-//        		this.getServletContext().getRequestDispatcher( "/user-profile.jsp" ).forward( request, response );
+                request.setAttribute("listLink", listLink);
                 
+                this.getServletContext().getRequestDispatcher("/user-profile.jsp").forward(request, response);                
             	
             	connection.close();
             
