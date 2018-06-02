@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Index
  */
-@WebServlet(name = "servletIdex", urlPatterns = "/index")
+@WebServlet(name = "servletIndex", urlPatterns = "/index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

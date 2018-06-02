@@ -3,6 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>404 error</title>
+    <META http-equiv="refresh" content="3; URL=/url">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="static/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -32,10 +33,12 @@
           </style>
   </head>
   <body>
+  
     <div style="width: 40%;margin: auto;text-align: center;">
-            <h1 class="margTopForH1 amber-text tshadb">Page introuvable, désolé !</h1>
+            <h1 class="margTopForH1 amber-text tshadb">Redirection !</h1>
         <img src="static/img/404-error.png">
             <a href="index.jsp"><button class="waves-effect waves-light btn-large amber margTopForMainButton">Retourner sur la page d'accueil</button></a>
     </div> 
+    
   </body>
 </html>

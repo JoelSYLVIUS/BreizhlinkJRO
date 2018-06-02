@@ -4,7 +4,7 @@
     <section class="paddingtop5 inplink">
     	<div class="container">
         	<div class="white-text">
-        	<a class="grey-text text-lighten-4 hoverable right" href="index.jsp">Retour Accueil</a>
+        	<a class="grey-text text-lighten-4 hoverable right" href="../index.jsp">Retour Accueil</a>
                 	<h1 class="oswald white-text">Mentions Légales</h1>
                   		<p>
                       		Merci de lire attentivement les présentes modalités d'utilisation du présent site avant de le parcourir. En vous connectant sur ce site, vous acceptez sans réserve les présentes modalités.

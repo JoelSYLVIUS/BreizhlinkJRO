@@ -20,5 +20,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/Jonitro/Downloads/apache-tomcat-9.0.5/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/Jonitro/Downloads/commons-digester3-3.2/commons-digester3-3.2.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

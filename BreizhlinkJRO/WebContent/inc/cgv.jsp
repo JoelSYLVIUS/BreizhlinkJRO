@@ -4,7 +4,7 @@
     <section class="paddingtop5 inplink">
     	<div class="container">
         	<div class="white-text">
-        	<a class="grey-text text-lighten-4 hoverable right" href="index.jsp">Retour Accueil</a>
+        	<a class="grey-text text-lighten-4 hoverable right" href="../index.jsp">Retour Accueil</a>
                 	<h1 class="oswald white-text">CGV</h1>
                   		<p class="center f40">
                       		Conditions générales de vente de prestations de services en ligne à des consommateurs particuliers
