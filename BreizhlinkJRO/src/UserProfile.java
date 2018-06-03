@@ -42,6 +42,8 @@ public class UserProfile extends HttpServlet {
     		
     		HttpSession session = request.getSession();
     		Integer idUser = (Integer) session.getAttribute("iduser");
+    		
+    		if(idUser != null) {
 		
 		try {
         	DriverDatabase db = new DriverDatabase();            	
@@ -76,6 +78,11 @@ public class UserProfile extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+    		}
+    		else {
+            	response.sendRedirect("login.jsp");
+    		}
         
 	}
 
@@ -85,6 +92,57 @@ public class UserProfile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+        if (request.getParameter("prenom") != null && request.getParameter("nom") != null) {
+            String firstname = request.getParameter("prenom");
+            String lastname = request.getParameter("nom");
+            String pseudo = request.getParameter("pseudo");            
+            String email = request.getParameter("email");            
+            String password = request.getParameter("password");            
+
+	            try {
+	            	
+                		HttpSession session = request.getSession();
+                		int idUser = (int) session.getAttribute("iduser");
+                		
+                		session.setAttribute("pseudo", pseudo);
+                    session.setAttribute("prenomuser", firstname);
+                    session.setAttribute("nomuser", lastname);
+                    session.setAttribute("emailuser", email);
+                    session.setAttribute("mdp", password);
+                        
+	            		DriverDatabase db = new DriverDatabase();
+	            	                
+	                Connection connection = db.getConnection();
+	                Calendar currentTime = Calendar.getInstance();
+	
+	                PreparedStatement pst = connection.prepareStatement("UPDATE user SET prenom = ?, nom"
+	                		+ " = ?, email = ?, mdp = ?, pseudo = ?, date_create = ?  WHERE user.id = ?;");
+	                pst.setString(1, firstname);
+	                pst.setString(2, lastname);
+	                pst.setString(3, email);
+	                pst.setString(4, password);
+	                pst.setString(5, pseudo);
+	                pst.setDate(6, new java.sql.Date(currentTime.getTime().getTime()));
+	                pst.setInt(7, idUser);
+	
+	                pst.executeUpdate();
+	                
+	                	response.sendRedirect("userprofile");
+	                
+	                connection.close();
+	            }
+	            
+	            catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            
+            }
+        
+        else {
+            	response.sendRedirect("user-profile.jsp");
+        }
     
 	}
 

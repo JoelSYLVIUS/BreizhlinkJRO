@@ -22,8 +22,8 @@
 			
 				<div class="col s5">
 				
-					<h1 class="white-text f40" style="text-shadow: 0 0 4px #000000;">Information de votre profil</h1>
-					<form action="inscriptuser" method="post" class="col s12 inplink formgen">
+					<h1 class="white-text f50 center" style="text-shadow: 0 0 4px #000000;">Information de votre profil</h1>
+					<form action="userprofile" method="post" class="col s12 inplink formgen">
 
 						<div class="row">
 				               <div class="input-field col s11 m11 l6">
@@ -66,9 +66,9 @@
 					</form>
 				</div>
 				
-				<div class="col s6 offset-s1">
+				<div class="col s7">
 				
-					<h1 class="white-text f40" style="text-shadow: 0 0 4px #000000;">Vos liens</h1>
+					<h1 class="white-text f50 center" style="text-shadow: 0 0 4px #000000;">Vos liens</h1>
 									
 					<div class="row col s12 inplink formgen">
 
