@@ -2,19 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="inc/header.jsp"/>
 <body>
-	<header>
-		<div class="row margtop">
-			<div class="col l4">
-				<img src="" alt="" width="100%" height="100%">
-			</div>
-			<div class="col l8">
-				<img src="" alt="" width="100%" height="100%">
-			</div>
-		</div>
-		<div class="row">
-			<jsp:include page="inc/menu.jsp"/>
-		</div>
-	</header>
+<jsp:include page="inc/ads.jsp"/>
 		<% if ((session.getAttribute("pseudo")) != null){ %>
 	<section style="min-height:60vh;">
 		<div class="container">
@@ -112,4 +100,3 @@
 	<% } %>
 	
 	<jsp:include page="inc/footer.jsp"/>
-</html>
