@@ -19,6 +19,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/roman/eclipse-workspace/visiteDyn/WebContent/WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/roman/git/BreizhlinkJRO/BreizhlinkJRO/WebContent/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

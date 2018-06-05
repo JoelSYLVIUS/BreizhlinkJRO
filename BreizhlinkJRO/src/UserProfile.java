@@ -93,7 +93,13 @@ public class UserProfile extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-        if (request.getParameter("prenom") != null && request.getParameter("nom") != null) {
+		// get reCAPTCHA request param
+		String gRecaptchaResponse = request
+				.getParameter("g-recaptcha-response");
+		System.out.println(gRecaptchaResponse);
+		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+		
+        if (request.getParameter("prenom") != null && request.getParameter("nom") != null && verify) {
             String firstname = request.getParameter("prenom");
             String lastname = request.getParameter("nom");
             String pseudo = request.getParameter("pseudo");            
@@ -141,7 +147,7 @@ public class UserProfile extends HttpServlet {
             }
         
         else {
-            	response.sendRedirect("user-profile.jsp");
+            	response.sendRedirect("index.jsp");
         }
     
 	}

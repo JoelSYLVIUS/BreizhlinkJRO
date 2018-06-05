@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
     <title>${title}</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="static/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

@@ -46,6 +46,10 @@
 		             	</div>
 		             	
 		             	<div class="row">
+		             		<div class="g-recaptcha" data-sitekey="6Ld9Al0UAAAAAN3J_SXGMfKywC5M2pa4nYVYSaZI"></div>
+		             	</div>
+		             	
+		             	<div class="row">
 			                 <div class="col l12 center">
 			                     <input type="submit" value="Modifier" class="btn btn-success amber hoverable">
 			                 </div>
