@@ -1,3 +1,4 @@
+<c:set var="title" value="Accueil - Breizhlink JRO" scope="page" />
 
 <jsp:include page="inc/header.jsp"/>
 <body>

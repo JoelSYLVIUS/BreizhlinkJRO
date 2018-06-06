@@ -44,6 +44,7 @@ public class Raccourcis extends HttpServlet {
             //out.println(mdp_bjro);
             
             
+            
             ArrayList<Character> surl = new ArrayList<Character>();
             Random rand = new Random();
             String alphabet = "abc1defgh2ij3klm4no5pq6rs7tuv8wx9y0z";
@@ -59,7 +60,7 @@ public class Raccourcis extends HttpServlet {
             
             try {
             	DriverDatabase db = new DriverDatabase();
-                if(mdp_bjro != null) {
+                if(mdp_bjro != "") {
                 	
                 	
                     Connection connection = db.getConnection();
@@ -100,14 +101,17 @@ public class Raccourcis extends HttpServlet {
                 	Connection connection = db.getConnection(); 
                     Calendar currentTime = Calendar.getInstance();
                 	
-                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (orginallink, pwd_link, create_date) VALUES (?, ?, ?, ?, ?, ?);");
-                	create.setString(1, url);
-                    create.setString(2, urlshort);
-                    create.setLong(3, 0);
-                    create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
+                	PreparedStatement create2 = connection.prepareStatement("INSERT INTO link (originallink, shortlink, pwd_link, create_date) VALUES (?, ?, ?, ?);");
+                	create2.setString(1, url);
+                    create2.setString(2, urlshort);
+                    create2.setString(3, "0");
+                    create2.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
 
-                    create.executeUpdate();
+                    create2.executeUpdate();
                     connection.close();
+                    
+                    request.setAttribute("urlshort", urlshort);
+                    
                     getServletContext().getRequestDispatcher("/affiche_url.jsp").forward(request, response);
                 } 
             }  catch (SQLException e) {

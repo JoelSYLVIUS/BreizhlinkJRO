@@ -128,20 +128,23 @@ public class Raccourcisusr extends HttpServlet {
                 	Connection connection = db.getConnection(); 
                     Calendar currentTime = Calendar.getInstance();
                 	
-                	PreparedStatement create = connection.prepareStatement("INSERT INTO link (originallink, shortlink, pwd_link, create_date, id_user, captcha, date_limit, start_date, end_date, max_click) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-                	create.setString(1, url);
-                    create.setString(2, urlshort);
-                    create.setString(3, "0");
-                    create.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
-                    create.setString(5, iduser);
-                    create.setString(6, check);
-                    create.setString(7, datelimite);
-                    create.setString(8, datestart);
-                    create.setString(9, dateend);
-                    create.setString(10, clicmax);
+                	PreparedStatement create2 = connection.prepareStatement("INSERT INTO link (originallink, shortlink, pwd_link, create_date, id_user, captcha, date_limit, start_date, end_date, max_click) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                	create2.setString(1, url);
+                    create2.setString(2, urlshort);
+                    create2.setString(3, "0");
+                    create2.setDate(4, new java.sql.Date(currentTime.getTime().getTime()));
+                    create2.setString(5, iduser);
+                    create2.setString(6, check);
+                    create2.setString(7, datelimite);
+                    create2.setString(8, datestart);
+                    create2.setString(9, dateend);
+                    create2.setString(10, clicmax);
 
-                    create.executeUpdate();
+                    create2.executeUpdate();
                     connection.close();
+                    
+                    request.setAttribute("urlshort", urlshort);
+                    
                     getServletContext().getRequestDispatcher("/affiche_url.jsp").forward(request, response);
                 }
                 
