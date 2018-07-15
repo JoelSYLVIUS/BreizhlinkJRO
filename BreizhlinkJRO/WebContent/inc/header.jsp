@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
+	
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
     	.margtop{
@@ -27,6 +27,9 @@
 		    background-size: 100% 100%;
 		    background-position: fixed;
 		    
+		  }
+		  .body {
+		    background-image: url("../static/img/bg.jpg");
 		  }
 		  footer{
 		  width: 100%;
