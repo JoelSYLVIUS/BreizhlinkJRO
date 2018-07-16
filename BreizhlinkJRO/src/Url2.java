@@ -112,11 +112,12 @@ public class Url2 extends HttpServlet {
                 	}
                 }
                 
+                ResultSet rs2 = null;
                 if(rs.getInt("max_click") != 0) {
             		String query2 = "SELECT current_click FROM statistiques WHERE id_link = ? ";
                     PreparedStatement pst2 = connection.prepareStatement(query1);
                       pst2.setLong(1, id_link);
-                    ResultSet rs2 = pst1.executeQuery();
+                    rs2 = pst1.executeQuery();
                     if(rs2.next()) {
                     	 if(rs2.getInt("current_click") < rs.getInt("max_click") || rs2.getInt("current_click") == rs.getInt("max_click")) {
                     		 clickactuel = rs2.getInt("current_click") + 1;
@@ -125,6 +126,7 @@ public class Url2 extends HttpServlet {
                     }
                     
                 }else {
+                	clickactuel = rs2.getInt("current_click") + 1;
                 	clickok = "NOCLICK";
                 }
                     if(rs.getDate("date_limit") != null) {

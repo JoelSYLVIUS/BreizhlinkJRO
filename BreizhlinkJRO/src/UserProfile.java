@@ -5,10 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,9 +36,15 @@ public class UserProfile extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-        //PrintStream out = new PrintStream(response.getOutputStream());
-		String IdUser = request.getParameter("user");
-		//out.println(IdUser);
+//        PrintStream out = new PrintStream(response.getOutputStream());
+		
+    		ArrayList listLink = new ArrayList();
+    		
+    		HttpSession session = request.getSession();
+    		Integer idUser = (Integer) session.getAttribute("iduser");
+    		
+    		if(idUser != null) {
+		
 		try {
         	DriverDatabase db = new DriverDatabase();            	
             	
@@ -49,24 +52,24 @@ public class UserProfile extends HttpServlet {
                 
                 String query = "SELECT * FROM link WHERE id_user = ?";
                 PreparedStatement pst = connection.prepareStatement(query);
-                  pst.setString(1, IdUser);
+                  pst.setInt(1, idUser);
                 ResultSet rs = pst.executeQuery();
                
-                Map<String, String> al = new HashMap<String, String>();
+                
                 while(rs.next()) {
                 	
-                	al.put("link", rs.getString("originallink"));
-                	al.put("slink",rs.getString("shortlink"));
+            			Map links = new HashMap();
                 	
-                }
-                request.setAttribute("al", al);
+	            	    links.put("originalLink", rs.getString("originallink"));
+	            	    links.put("shortLink", rs.getString("shortLink"));
+	            	    
+	            	    listLink.add(links);                    
                     
-                    getServletContext().getRequestDispatcher("/user-profile.jsp").forward(request, response);
-                //else {
-                	//response.sendRedirect("/user-profile.jsp");
-                //}
-                               
-
+                }
+                
+                request.setAttribute("listLink", listLink);
+                
+                this.getServletContext().getRequestDispatcher("/user-profile.jsp").forward(request, response);                
             	
             	connection.close();
             
@@ -75,6 +78,11 @@ public class UserProfile extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+    		}
+    		else {
+            	response.sendRedirect("login.jsp");
+    		}
         
 	}
 
@@ -84,6 +92,63 @@ public class UserProfile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		// get reCAPTCHA request param
+		String gRecaptchaResponse = request
+				.getParameter("g-recaptcha-response");
+		System.out.println(gRecaptchaResponse);
+		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+		
+        if (request.getParameter("prenom") != null && request.getParameter("nom") != null && verify) {
+            String firstname = request.getParameter("prenom");
+            String lastname = request.getParameter("nom");
+            String pseudo = request.getParameter("pseudo");            
+            String email = request.getParameter("email");            
+            String password = request.getParameter("password");            
+
+	            try {
+	            	
+                		HttpSession session = request.getSession();
+                		int idUser = (int) session.getAttribute("iduser");
+                		
+                		session.setAttribute("pseudo", pseudo);
+                    session.setAttribute("prenomuser", firstname);
+                    session.setAttribute("nomuser", lastname);
+                    session.setAttribute("emailuser", email);
+                    session.setAttribute("mdp", password);
+                        
+	            		DriverDatabase db = new DriverDatabase();
+	            	                
+	                Connection connection = db.getConnection();
+	                Calendar currentTime = Calendar.getInstance();
+	
+	                PreparedStatement pst = connection.prepareStatement("UPDATE user SET prenom = ?, nom"
+	                		+ " = ?, email = ?, mdp = ?, pseudo = ?, date_create = ?  WHERE user.id = ?;");
+	                pst.setString(1, firstname);
+	                pst.setString(2, lastname);
+	                pst.setString(3, email);
+	                pst.setString(4, password);
+	                pst.setString(5, pseudo);
+	                pst.setDate(6, new java.sql.Date(currentTime.getTime().getTime()));
+	                pst.setInt(7, idUser);
+	
+	                pst.executeUpdate();
+	                
+	                	response.sendRedirect("userprofile");
+	                
+	                connection.close();
+	            }
+	            
+	            catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            
+            }
+        
+        else {
+            	response.sendRedirect("index.jsp");
+        }
     
 	}
 

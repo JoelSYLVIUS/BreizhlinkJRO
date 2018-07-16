@@ -39,6 +39,9 @@
 		  .f40{
 		  	font-size:20px !important;
 		  }
+		  .f50{
+		  	font-size:30px !important;
+		  }
 		  .typ{
 		  	position: relative!important;
 		  	font-size: 40px;
