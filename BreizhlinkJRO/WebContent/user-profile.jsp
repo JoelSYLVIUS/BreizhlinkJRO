@@ -58,7 +58,7 @@
                 
                     <h2 class="white-text f50 center" style="text-shadow: 0 0 4px #000000;">Vos liens</h2>
                                     
-                    <div class="row col s12 inplink formgen">
+                    <div class="row col s12 inplink formgen" style="max-height: 514px; overflow-y: scroll">
                     <table class="highlight responsive-table white-text">
                         <thead>
                           <tr>
@@ -71,7 +71,7 @@
                         <c:forEach items="${listLink}" var="item">
                           <tr>
                             <td class="truncate" style="max-width:200px">${item.originalLink}</td>
-                            <td><a href="http://localhost:8080/BreizhlinkJRO/${item.shortLink}">http://localhost:8080/BreizhlinkJRO/${item.shortLink}</a></td>
+                            <td><a href="stats?idlink=${item.id_link}&lk=${item.originalLink}&slk=${item.shortLink}">http://localhost:8080/BreizhlinkJRO/${item.shortLink}</a></td>
                           </tr>
                         </c:forEach>
                         </tbody>

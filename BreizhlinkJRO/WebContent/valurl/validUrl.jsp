@@ -129,8 +129,22 @@
 		</section>
 	<% } else{ %>
 		<section class="center">
-			<h1 class="white-text tshadb">Vous n'etes pas connecter</h1>
+			<h1 class="white-text tshadb">Cliquer sur suivant pour accéder à votre lien</h1>
 			<br><br><br><br>
+			<form action="url2" method="post" class="col s12 inplink formgen"> 
+            <div class="input-field col s12">
+                 <input type="hidden" name="url" value="${url}">
+                 <input type="hidden" name="ipuser" value="${ipuser}">
+                 <input type="hidden" name="deviceuser" value="${deviceuser}">
+                 <input type="hidden" name="navigateuruser" value="${navigateuruser}">
+            </div> 
+         
+         	<div class"row"> 
+            	<div class="col l12 center">
+                 	<input type="submit" value="Suivant" class="btn btn-success amber hoverable"> 
+            	</div> 
+         	</div>
+         	</form> 
 				<p class="white-text tshadb f40">
 					Veuillez vous connecter pour avoir accès aux contenue de cette page!
 				</p>

@@ -62,6 +62,7 @@ public class UserProfile extends HttpServlet {
                 	
 	            	    links.put("originalLink", rs.getString("originallink"));
 	            	    links.put("shortLink", rs.getString("shortLink"));
+	            	    links.put("id_link", rs.getInt("id"));
 	            	    
 	            	    listLink.add(links);                    
                     
